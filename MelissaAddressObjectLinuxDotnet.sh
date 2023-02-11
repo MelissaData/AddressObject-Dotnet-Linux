@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Name:    MelissaDataAddressObjectLinuxNET
-# Purpose: Use the MelissaUpdater to make the MelissaDataAddressObjectLinuxNET sample usable
+# Name:    MelissaAddressObjectLinuxDotnet
+# Purpose: Use the MelissaUpdater to make the MelissaAddressObjectLinuxDotnet code usable
 
 ######################### Constants ##########################
 
@@ -79,7 +79,7 @@ ProductName="DQ_ADDR_DATA"
 # Uses the location of the .sh file 
 # Modify this if you want to use 
 CurrentPath=$(pwd)
-ProjectPath="$CurrentPath/MelissaDataAddressObjectLinuxNETSample"
+ProjectPath="$CurrentPath/MelissaAddressObjectLinuxDotnet"
 BuildPath="$ProjectPath/Build"
 DataPath="$ProjectPath/Data"
 
@@ -156,7 +156,7 @@ CheckSOs()
 
 ########################## Main ############################
 
-printf "\n=============== Sample of Melissa Data Address Object ===============\n                    [ .NET | Linux | 64BIT ]\n"
+printf "\n====================== Melissa Address Object ======================\n                    [ .NET | Linux | 64BIT ]\n"
 
 # Get license (either from parameters or user input)
 if [ -z "$license" ];
@@ -209,20 +209,20 @@ fi
 
 printf "\nAll file(s) have been downloaded/updated!\n"
 
-# Start sample
+# Start program
 # Build project
 printf "\n=========================== BUILD PROJECT ==========================\n"
 
 # Target frameworks net7.0, net5.0, netcoreapp3.1
 # Please comment out the version that you don't want to use and uncomment the one that you do want to use
-dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaDataAddressObjectLinuxNETSample/MelissaDataAddressObjectLinuxNETSample.csproj
-#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaDataAddressObjectLinuxNETSample/MelissaDataAddressObjectWindowsNETSample.csproj
-#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaDataAddressObjectLinuxNETSample/MelissaDataAddressObjectLinuxNETSample.csproj
+dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaAddressObjectLinuxDotnet/MelissaAddressObjectLinuxDotnet.csproj
+#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaAddressObjectLinuxDotnet/MelissaAddressObjectLinuxDotnet.csproj
+#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaAddressObjectLinuxDotnet/MelissaAddressObjectLinuxDotnet.csproj
 
 # Run Project
 if [ -z "$address" ] && [ -z "$city" ] && [ -z "$state" ] && [ -z "$zip" ];
 then
- 	dotnet $BuildPath/MelissaDataAddressObjectLinuxNETSample.dll --license $license --dataPath $DataPath
+ 	dotnet $BuildPath/MelissaAddressObjectLinuxDotnet.dll --license $license --dataPath $DataPath
 else
-    dotnet $BuildPath/MelissaDataAddressObjectLinuxNETSample.dll --license $license --dataPath $DataPath --address "$address" --city "$city" --state "$state" --zip "$zip"
+    dotnet $BuildPath/MelissaAddressObjectLinuxDotnet.dll --license $license --dataPath $DataPath --address "$address" --city "$city" --state "$state" --zip "$zip"
 fi

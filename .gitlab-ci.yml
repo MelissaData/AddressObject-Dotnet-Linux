@@ -6,7 +6,7 @@ buildJob:
   image: mcr.microsoft.com/dotnet/sdk:7.0
   
   script:
-    - dotnet publish -f="net7.0" -c Release -o Artifacts MelissaDataAddressObjectLinuxNETSample/MelissaDataAddressObjectLinuxNETSample.csproj
+    - dotnet publish -f="net7.0" -c Release -o Artifacts MelissaAddressObjectLinuxDotnet/MelissaAddressObjectLinuxDotnet.csproj
 
   artifacts:
     paths:

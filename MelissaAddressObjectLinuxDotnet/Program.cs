@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using MelissaData;
 
-namespace MelissaDataAddressObjectLinuxNETSample
+namespace MelissaAddressObjectLinuxDotnet
 {
   class Program
   {
@@ -66,7 +66,7 @@ namespace MelissaDataAddressObjectLinuxNETSample
 
     static void RunAsConsole(string license, string testAddress, string testCity, string testState, string testZip, string dataPath)
     {
-      Console.WriteLine("\n\n====== WELCOME TO MELISSA DATA ADDRESS OBJECT LINUX NET SAMPLE =====\n");
+      Console.WriteLine("\n\n=========== WELCOME TO MELISSA ADDRESS OBJECT LINUX DOTNET =========\n");
 
       AddressObject addressObject = new AddressObject(license, dataPath);
 
@@ -161,13 +161,13 @@ namespace MelissaDataAddressObjectLinuxNETSample
           }
         }
       }
-      Console.WriteLine("\n========= THANK YOU FOR USING MELISSA DATA NET OBJECT ========\n");
+      Console.WriteLine("\n========= THANK YOU FOR USING MELISSA DOTNET OBJECT ========\n");
     }
   }
 
   class AddressObject
   {
-    // Path to address object data files (.dat, etc)
+    // Path to Address Object data files (.dat, etc)
     string dataFilePath;
 
     // Create instance of Melissa Address Object
@@ -201,7 +201,7 @@ namespace MelissaDataAddressObjectLinuxNETSample
       Console.WriteLine($"              Expiration Date: {mdAddressObj.GetLicenseExpirationDate()}");
 
       /**
-       * This number should match with file properties of the Melissa Data Object binary file.
+       * This number should match with file properties of the Melissa Object binary file.
        * If TEST appears with the build number, there may be a license key issue.
        */
       Console.WriteLine($"               Object Version: {mdAddressObj.GetBuildNumber()}\n");
@@ -220,8 +220,8 @@ namespace MelissaDataAddressObjectLinuxNETSample
       mdAddressObj.VerifyAddress();
       data.ResultCodes = mdAddressObj.GetResults();
 
-      // ResultsCodes explain any issues address object has with the object.
-      // List of result codes for Address object
+      // ResultsCodes explain any issues Address Object has with the object.
+      // List of result codes for Address Object
       // https://wiki.melissadata.com/?title=Result_Code_Details#Address_Object
     }
   }
