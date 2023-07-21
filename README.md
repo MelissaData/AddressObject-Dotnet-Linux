@@ -28,8 +28,7 @@ And return
 
 ## Tested Environments
 
-- Linux 64-bit .NET 7.0, .NET 5.0, .NET Core 3.1
-- Ubuntu 20.04.05 LTS
+- Ubuntu Linux 20.04.04 LTS 64-bit .NET 7.0
 - Melissa data files for 2023-06
 
 ## Required Files and Programs
