@@ -107,7 +107,7 @@ namespace MelissaAddressObjectLinuxDotnet
 
         // Print user input
         Console.WriteLine("\n============================== INPUTS ==============================\n");
-        Console.WriteLine($"               Address Line 1: {dataContainer.Address}");
+        Console.WriteLine($"                      Address: {dataContainer.Address}");
         Console.WriteLine($"                         City: {dataContainer.City}");
         Console.WriteLine($"                        State: {dataContainer.State}");
         Console.WriteLine($"                          Zip: {dataContainer.Zip}");
