@@ -29,7 +29,7 @@ And return
 ## Tested Environments
 
 - Linux 64-bit .NET 7.0, Ubuntu 20.04.05 LTS
-- Melissa data files for 2023-07
+- Melissa data files for 2023-08
 
 ## Required Files and Programs
 

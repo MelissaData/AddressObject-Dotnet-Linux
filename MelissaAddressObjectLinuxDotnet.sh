@@ -73,7 +73,7 @@ done
 
 ######################### Config ###########################
 
-RELEASE_VERSION='2023.07'
+RELEASE_VERSION='2023.08'
 ProductName="DQ_ADDR_DATA"
 
 # Uses the location of the .sh file 
@@ -128,7 +128,7 @@ DownloadDataFiles()
 
 DownloadSO() 
 {
-    printf "\nMELISSA UPDATER IS DOWNLOADING SO(s)...\n"
+    printf "\nMELISSA UPDATER IS DOWNLOADING SO(S)...\n"
     
     # Check for quiet mode
     if [ $quiet == "true" ];
@@ -153,7 +153,7 @@ DownloadSO()
 
 DownloadWrapper() 
 {
-    printf "\nMELISSA UPDATER IS DOWNLOADING WRAPPER(s)...\n"
+    printf "\nMELISSA UPDATER IS DOWNLOADING WRAPPER(S)...\n"
     
     # Check for quiet mode
     if [ $quiet == "true" ];
@@ -173,7 +173,7 @@ DownloadWrapper()
         fi
     fi
     
-    printf "Melissa Updater finished downloading $Config_FileName!\n"
+    printf "Melissa Updater finished downloading $Wrapper_FileName!\n"
 }
 
 CheckSOs() 
@@ -253,7 +253,7 @@ dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaAddressObjectLinuxDot
 # Run Project
 if [ -z "$address" ] && [ -z "$city" ] && [ -z "$state" ] && [ -z "$zip" ];
 then
- 	dotnet $BuildPath/MelissaAddressObjectLinuxDotnet.dll --license $license --dataPath $DataPath
+    dotnet $BuildPath/MelissaAddressObjectLinuxDotnet.dll --license $license --dataPath $DataPath
 else
     dotnet $BuildPath/MelissaAddressObjectLinuxDotnet.dll --license $license --dataPath $DataPath --address "$address" --city "$city" --state "$state" --zip "$zip"
 fi
