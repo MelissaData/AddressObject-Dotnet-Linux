@@ -14,57 +14,67 @@ address=""
 city=""
 state=""
 zip=""
+dataPath=""
 license=""
 quiet="false"
 
 while [ $# -gt 0 ] ; do
   case $1 in
-    -a | --address) 
+    --address) 
         address="$2"
 
-        if [ "$address" == "-c" ] || [ "$address" == "--city" ] || [ "$address" == "-s" ] || [ "$address" == "--state" ] || [ "$address" == "-z" ] || [ "$address" == "--zip" ] || [ "$address" == "-l" ] || [ "$address" == "--license" ] || [ "$address" == "-q" ] || [ "$address" == "--quiet" ] || [ -z "$address" ];
+        if [ "$address" == "--city" ] || [ "$address" == "--state" ] || [ "$address" == "--zip" ] || [ "$address" == "--dataPath" ] || [ "$address" == "--license" ] || [ "$address" == "--dataPath" ] || [ "$address" == "--quiet" ] || [ -z "$address" ];
         then
             printf "${RED}Error: Missing an argument for parameter \'address\'.${NC}\n"  
             exit 1
         fi  
         ;;
-	-c | --city) 
+    --city) 
         city="$2"
 
-        if [ "$city" == "-a" ] || [ "$city" == "--address" ] || [ "$city" == "-s" ] || [ "$city" == "--state" ] || [ "$city" == "-z" ] || [ "$city" == "--zip" ] || [ "$city" == "-l" ] || [ "$city" == "--license" ] || [ "$city" == "-q" ] || [ "$city" == "--quiet" ] || [ -z "$city" ];
+        if [ "$city" == "--address" ] || [ "$city" == "--state" ] || [ "$city" == "--zip" ] || [ "$city" == "--dataPath" ] || [ "$city" == "--license" ] || [ "$city" == "--dataPath" ] || [ "$city" == "--quiet" ] || [ -z "$city" ];
         then
             printf "${RED}Error: Missing an argument for parameter \'city\'.${NC}\n"  
             exit 1
         fi  
         ;;
-	-s | --state) 
+    --state) 
         state="$2"
 
-        if [ "$state" == "-c" ] || [ "$state" == "--city" ] || [ "$state" == "-a" ] || [ "$state" == "--address" ] || [ "$state" == "-z" ] || [ "$state" == "--zip" ] || [ "$state" == "-l" ] || [ "$state" == "--license" ] || [ "$state" == "-q" ] || [ "$state" == "--quiet" ] || [ -z "$state" ];
+        if [ "$state" == "--city" ] || [ "$state" == "--address" ] || [ "$state" == "--zip" ] || [ "$state" == "--dataPath" ] || [ "$state" == "--license" ] || [ "$state" == "--dataPath" ] || [ "$state" == "--quiet" ] || [ -z "$state" ];
         then
             printf "${RED}Error: Missing an argument for parameter \'state\'.${NC}\n"  
             exit 1
         fi   
         ;;
-	-z | --zip) 
+    --zip) 
         zip="$2"
 
-        if [ "$zip" == "-c" ] || [ "$zip" == "--city" ] || [ "$zip" == "-s" ] || [ "$zip" == "--state" ] || [ "$zip" == "-a" ] || [ "$zip" == "--address" ] || [ "$zip" == "-l" ] || [ "$zip" == "--license" ] || [ "$zip" == "-q" ] || [ "$zip" == "--quiet" ] || [ -z "$zip" ];
+        if [ "$zip" == "--city" ] || [ "$zip" == "--state" ] || [ "$zip" == "--address" ] || [ "$zip" == "--dataPath" ] || [ "$zip" == "--license" ] || [ "$zip" == "--dataPath" ] || [ "$zip" == "--quiet" ] || [ -z "$zip" ];
         then
             printf "${RED}Error: Missing an argument for parameter \'zip\'.${NC}\n"  
             exit 1
         fi   
         ;;		
-    -l | --license) 
+    --dataPath) 
+        dataPath="$2"
+
+        if [ "$dataPath" == "--address" ] || [ "$dataPath" == "--city" ] || [ "$dataPath" == "--state" ] || [ "$dataPath" == "--zip" ] || [ "$dataPath" == "--license" ] || [ "$dataPath" == "--quiet" ] || [ -z "$dataPath" ];
+        then
+            printf "${RED}Error: Missing an argument for parameter \'dataPath\'.${NC}\n"  
+            exit 1
+        fi   
+        ;;
+    --license) 
         license="$2"
 
-        if [ "$license" == "-c" ] || [ "$license" == "--city" ] || [ "$license" == "-s" ] || [ "$license" == "--state" ] || [ "$license" == "-z" ] || [ "$license" == "--zip" ] || [ "$license" == "-a" ] || [ "$license" == "--address" ] || [ "$license" == "-q" ] || [ "$license" == "--quiet" ] || [ -z "$license" ];
+        if [ "$license" == "--city" ] || [ "$license" == "--state" ] || [ "$license" == "--zip" ] || [ "$license" == "--dataPath" ] || [ "$license" == "--address" ] || [ "$license" == "--dataPath" ] || [ "$license" == "--quiet" ] || [ -z "$license" ];
         then
             printf "${RED}Error: Missing an argument for parameter \'license\'.${NC}\n"  
             exit 1
         fi    
         ;;
-    -q | --quiet) 
+    --quiet) 
         quiet="true" 
         ;;
   esac
@@ -73,7 +83,7 @@ done
 
 ######################### Config ###########################
 
-RELEASE_VERSION='2024.03'
+RELEASE_VERSION='2024.04'
 ProductName="DQ_ADDR_DATA"
 
 # Uses the location of the .sh file 
@@ -81,15 +91,26 @@ CurrentPath=$(pwd)
 ProjectPath="$CurrentPath/MelissaAddressObjectLinuxDotnet"
 
 BuildPath="$ProjectPath/Build"
-if [ ! -d "$BuildPath" ]; 
+if [ ! -d "$BuildPath" ];
 then
-  mkdir -p "$BuildPath"
+    mkdir "$BuildPath"
 fi
 
-DataPath="$ProjectPath/Data" # To use your own data file(s), change to your DQS release data file(s) directory
-if [ ! -d "$DataPath" ] && [ "$DataPath" = "$ProjectPath/Data" ]; 
+if [ -z "$dataPath" ];
 then
-  mkdir -p "$DataPath"
+    DataPath="$ProjectPath/Data"
+else
+    DataPath=$dataPath
+fi
+
+if [ ! -d "$DataPath" ] && [ "$DataPath" == "$ProjectPath/Data" ];
+then
+    mkdir "$DataPath"
+elif [ ! -d "$DataPath" ] && [ "$DataPath" != "$ProjectPath/Data" ];
+then
+    printf "\nData file path does not exist. Please check that your file path is correct.\n"
+    printf "\nAborting program, see above.\n"
+    exit 1
 fi
 
 # Config variables for download file(s)
@@ -206,6 +227,22 @@ if [ -z "$license" ];
 then
   printf "\nLicense String is invalid!\n"
   exit 1
+fi
+
+# Get data file path (either from parameters or user input)
+if [ "$DataPath" = "$ProjectPath/Data" ]; then
+    printf "Please enter your data files path directory if you have already downloaded the release zip.\nOtherwise, the data files will be downloaded using the Melissa Updater (Enter to skip): "
+    read dataPathInput
+
+    if [ ! -z "$dataPathInput" ]; then  
+        if [ ! -d "$dataPathInput" ]; then  
+            printf "\nData file path does not exist. Please check that your file path is correct.\n"
+            printf "\nAborting program, see above.\n"
+            exit 1
+        else
+            DataPath=$dataPathInput
+        fi
+    fi
 fi
 
 # Use Melissa Updater to download data file(s) 
