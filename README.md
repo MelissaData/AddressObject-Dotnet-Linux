@@ -31,7 +31,7 @@ And return
 ## Tested Environments
 
 - Linux 64-bit .NET 7.0, Ubuntu 20.04.05 LTS
-- Melissa data files for 2024-09
+- Melissa data files for 2024-10
 
 ## Required Files and Programs
 
@@ -100,8 +100,8 @@ Once all of this is done, you should be able to verify that the SDK is installed
 
 #### Download this project
 ```
-$ git clone https://github.com/MelissaData/AddressObject-Dotnet-Linux
-$ cd AddressObject-Dotnet-Linux
+git clone https://github.com/MelissaData/AddressObject-Dotnet-Linux
+cd AddressObject-Dotnet-Linux
 ```
 
 #### Set up Melissa Updater 
@@ -161,11 +161,11 @@ When you have modified the script to match your data location, let's run the scr
     
     The script will prompt the user for an address, city, state, and zip, then use the provided inputs to test Address Object. For example:
     ```
-    $ ./MelissaAddressObjectLinuxDotnet.sh
+    ./MelissaAddressObjectLinuxDotnet.sh
     ```
     For quiet mode:
     ```
-    $ ./MelissaAddressObjectLinuxDotnet.sh --quiet
+    ./MelissaAddressObjectLinuxDotnet.sh --quiet
     ```
 
 - Command Line
@@ -174,20 +174,20 @@ When you have modified the script to match your data location, let's run the scr
 
     With all parameters:
     ```
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688"
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --license "<your_license_string>"
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688"
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --license "<your_license_string>"
     ```
 
     With any known (optional) parameters:
     ```
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --state "CA" 
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --state "CA" --license "<your_license_string>"
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --state "CA" 
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --state "CA" --license "<your_license_string>"
     ```
 
     For quiet mode:
     ```
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --quiet
-    $ ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --license "<your_license_string>" --quiet
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --quiet
+    ./MelissaAddressObjectLinuxDotnet.sh --address "22382 Avenida Empresa" --city "Rancho Santa Margarita" --state "CA" --zip "92688" --license "<your_license_string>" --quiet
     ```
 This is the expected outcome of a successful setup for interactive mode:
 
