@@ -31,7 +31,7 @@ And return
 ## Tested Environments
 
 - Linux 64-bit .NET 8.0, Ubuntu 20.04.05 LTS
-- Melissa data files for 2025-07
+- Melissa data files for 2025-08
 
 ## Required Files and Programs
 
