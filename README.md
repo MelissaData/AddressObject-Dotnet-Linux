@@ -105,8 +105,8 @@ Once all of this is done, you should be able to verify that the SDK is installed
 
 #### Download this project
 ```
-git clone https://git.melissadata.com/dtgroup/melissadataobjectexamples/net/melissadataaddressobjectlinuxnetexample.git
-cd melissadataaddressobjectlinuxnetexample
+git clone https://github.com/MelissaData/AddressObject-Dotnet-Linux
+cd AddressObject-Dotnet-Linux
 ```
 
 #### Set up Melissa Updater 
